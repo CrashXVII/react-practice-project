@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Selectbox from './Elements/Selectbox';
+
 
 export default class MovieList extends Component {
   constructor(props) {
@@ -41,12 +43,14 @@ export default class MovieList extends Component {
     return (
       <div>
         { movielist.map(movie => (<h1 key={movie.id}>{ movie.title }</h1>))}
-        <select name="search-select" id="search-select" onChange={this.handleSearchSelect}>
-          <option value="movie/popular?">Popular</option>
-          <option value="movie/upcoming?">Upcoming</option>
-          <option value="movie/top_rated?">Top Rated</option>
-          <option value="movie/now_playing?">Now Playing</option>
-        </select>
+        <Selectbox
+          items={[
+            { value: 'movie/popular?', id: 1, text: 'Popular' },
+            { value: 'movie/upcoming?', id: 2, text: 'Upcoming' },
+            { value: 'movie/top_rated?', id: 3, text: 'Top Rated' },
+            { value: 'movie/now_playing?', id: 4, text: 'Now Playing' },
+          ]}
+        />
       </div>
     );
   }
