@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Selectbox from './Elements/Selectbox';
+import API_KEY from './API';
 
 
 export default class MovieList extends Component {
@@ -7,7 +8,7 @@ export default class MovieList extends Component {
     super(props);
     this.state = {
       movielist: [],
-      key: 'api_key=bc1fea1a843eab396d852f9f7d26a75e',
+      key: API_KEY,
       base: 'https://api.themoviedb.org/3/',
       searchpath: 'movie/popular?',
     };
