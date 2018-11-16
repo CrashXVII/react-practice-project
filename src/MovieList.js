@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Selectbox from './Elements/Selectbox';
 import API_KEY from './API';
 
 
@@ -43,15 +42,7 @@ export default class MovieList extends Component {
     const { movielist } = this.state;
     return (
       <div>
-        { movielist.map(movie => (<h1 key={movie.id}>{ movie.title }</h1>))}
-        <Selectbox
-          items={[
-            { value: 'movie/popular?', id: 1, text: 'Popular' },
-            { value: 'movie/upcoming?', id: 2, text: 'Upcoming' },
-            { value: 'movie/top_rated?', id: 3, text: 'Top Rated' },
-            { value: 'movie/now_playing?', id: 4, text: 'Now Playing' },
-          ]}
-        />
+        {movielist.map(movie => <h1 key={movie.id}>{movie.title}</h1>)}
       </div>
     );
   }
