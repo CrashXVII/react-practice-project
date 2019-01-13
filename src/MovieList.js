@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import API_KEY from './API';
+import Movie from './Movie';
+import Navigation from './Navigation';
 
 
 export default class MovieList extends Component {
@@ -42,7 +44,15 @@ export default class MovieList extends Component {
     const { movielist } = this.state;
     return (
       <div>
-        {movielist.map(movie => <h1 key={movie.id}>{movie.title}</h1>)}
+        <Navigation clickHander={this.handleSearchSelect} />
+        {movielist.map(movie => (
+          <Movie
+            key={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            posterpath={movie.poster_path}
+          />
+        ))}
       </div>
     );
   }
