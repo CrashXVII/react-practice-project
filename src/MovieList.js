@@ -5,11 +5,11 @@ import Movie from './Movie';
 
 const Button = styled.button`
   display: inline - block;
-  color: palevioletred;
+  color: #222;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid #222;
   border-radius: 3px;
   display: block;
 `;
@@ -26,7 +26,7 @@ const Ul = styled.ul`
 
 const MovieWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 export default class MovieList extends Component {

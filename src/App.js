@@ -1,12 +1,10 @@
 import React from 'react';
-import './App.css';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './MovieList';
 
 const App = () => (
   <div className="App">
-    <header className="App-header">
-      <MovieList />
-    </header>
+    <MovieList />
   </div>
 );
 
