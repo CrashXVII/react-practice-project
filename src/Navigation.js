@@ -20,7 +20,7 @@ const Nav = styled.nav`
 
 const Ul = styled.ul`
   list-style: none;
-  justify-content: space-around;
+  justify-content: flex-end;
   display: flex;
   margin: 0;
 `;

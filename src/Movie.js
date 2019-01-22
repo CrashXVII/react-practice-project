@@ -6,7 +6,8 @@ const POSTERPATH = 'https://image.tmdb.org/t/p/w92';
 
 const MovieContainer = styled.div`
   display: grid;
-  
+  justify-items: center;
+
 `;
 
 const Movie = ({ title, overview, posterpath }) => (

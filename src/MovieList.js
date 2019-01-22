@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import API_KEY from './API';
 import Movie from './Movie';
 import Navigation from './Navigation';
+import Loading from './Loading';
 
 const MovieWrapper = styled.div`
   display: grid;
   margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
   max-width: 90%;
   
 `;
@@ -64,7 +66,7 @@ export default class MovieList extends Component {
               />
             ))
           ) : (
-            <h3>Loading...</h3>
+            <Loading type="cylon" color="#333" />
           )}
         </MovieWrapper>
       </div>
