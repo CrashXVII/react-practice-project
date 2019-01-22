@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const POSTERPATH = 'https://image.tmdb.org/t/p/w92';
 
+const MovieContainer = styled.div`
+  display: grid;
+  
+`;
+
 const Movie = ({ title, overview, posterpath }) => (
-  <div>
+  <MovieContainer>
     <img src={`${POSTERPATH}${posterpath}`} alt={title} />
     <h1>{ title }</h1>
     <p>{ overview }</p>
-  </div>
+  </MovieContainer>
 );
 
 Movie.defaultProps = {

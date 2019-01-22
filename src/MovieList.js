@@ -2,31 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import API_KEY from './API';
 import Movie from './Movie';
-
-const Button = styled.button`
-  display: inline - block;
-  color: #222;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #222;
-  border-radius: 3px;
-  display: block;
-`;
-
-const Nav = styled.nav`
-  border-bottom: 1px solid #999;
-  margin-bottom: 10px;
-`;
-
-const Ul = styled.ul`
-  list-style: none;
-  display: flex;
-`;
+import Navigation from './Navigation';
 
 const MovieWrapper = styled.div`
   display: grid;
+  margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
+  max-width: 90%;
+  
 `;
 
 export default class MovieList extends Component {
@@ -69,30 +52,7 @@ export default class MovieList extends Component {
     const { movielist, isLoading } = this.state;
     return (
       <div>
-        <Nav>
-          <Ul>
-            <li>
-              <Button onClick={this.handleSearchSelect} value="movie/now_playing?">
-                Now Playing
-              </Button>
-            </li>
-            <li>
-              <Button onClick={this.handleSearchSelect} value="movie/upcoming?">
-                Upcoming Releases
-              </Button>
-            </li>
-            <li>
-              <Button onClick={this.handleSearchSelect} value="movie/popular?">
-                Popular Titles
-              </Button>
-            </li>
-            <li>
-              <Button onClick={this.handleSearchSelect} value="movie/top_rated?">
-                Top Rated
-              </Button>
-            </li>
-          </Ul>
-        </Nav>
+        <Navigation handleSearchSelect={this.handleSearchSelect} />
         <MovieWrapper>
           {!isLoading ? (
             movielist.map(movie => (
