@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import API_KEY from './API';
 import Movie from './Movie';
-import Navigation from './Navigation';
+import MovieDisplayButtons from './MovieDisplayButtons';
 import Loading from './Loading';
 
 const MovieWrapper = styled.div`
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
   max-width: 90%;
   
@@ -54,7 +54,7 @@ export default class MovieList extends Component {
     const { movielist, isLoading } = this.state;
     return (
       <div>
-        <Navigation handleSearchSelect={this.handleSearchSelect} />
+        <MovieDisplayButtons handleSearchSelect={this.handleSearchSelect} />
         <MovieWrapper>
           {!isLoading ? (
             movielist.map(movie => (
@@ -66,7 +66,7 @@ export default class MovieList extends Component {
               />
             ))
           ) : (
-            <Loading type="cylon" color="#333" />
+            <Loading type="spinningBubbles" color="#333" />
           )}
         </MovieWrapper>
       </div>

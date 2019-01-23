@@ -25,10 +25,15 @@ const Ul = styled.ul`
   margin: 0;
 `;
 
-const Navigation = ({ handleSearchSelect }) => (
+const MovieDisplayButtons = ({ handleSearchSelect }) => (
   <div>
     <Nav>
       <Ul>
+        <li>
+          <Button onClick={handleSearchSelect} value="movie/popular?">
+            Popular Titles
+          </Button>
+        </li>
         <li>
           <Button onClick={handleSearchSelect} value="movie/now_playing?">
             Now Playing
@@ -37,11 +42,6 @@ const Navigation = ({ handleSearchSelect }) => (
         <li>
           <Button onClick={handleSearchSelect} value="movie/upcoming?">
             Upcoming Releases
-          </Button>
-        </li>
-        <li>
-          <Button onClick={handleSearchSelect} value="movie/popular?">
-            Popular Titles
           </Button>
         </li>
         <li>
@@ -54,12 +54,12 @@ const Navigation = ({ handleSearchSelect }) => (
   </div>
 );
 
-Navigation.defaultProps = {
+MovieDisplayButtons.defaultProps = {
   handleSearchSelect: () => {},
 };
 
-Navigation.propTypes = {
+MovieDisplayButtons.propTypes = {
   handleSearchSelect: PropTypes.func,
 };
 
-export default Navigation;
+export default MovieDisplayButtons;
