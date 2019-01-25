@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import theme from 'styled-theming';
 import API_KEY from './API';
 import Movie from './Movie';
 import MovieDisplayButtons from './MovieDisplayButtons';
 import Loading from './Loading';
+import Footer from './Footer';
+
+const backgroundColor = theme('mode', {
+  dark: '#000',
+});
 
 const MovieWrapper = styled.div`
   display: grid;
@@ -11,7 +17,11 @@ const MovieWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
   max-width: 90%;
-  
+  background-color: ${backgroundColor};
+`;
+
+const Div = styled.div`
+  background-color: #000;
 `;
 
 export default class MovieList extends Component {
@@ -22,7 +32,7 @@ export default class MovieList extends Component {
       movielist: [],
       key: API_KEY,
       base: 'https://api.themoviedb.org/3/',
-      searchpath: 'movie/popular?',
+      searchpath: 'trending/movie/day?',
     };
   }
 
@@ -53,7 +63,7 @@ export default class MovieList extends Component {
   render() {
     const { movielist, isLoading } = this.state;
     return (
-      <div>
+      <Div>
         <MovieDisplayButtons handleSearchSelect={this.handleSearchSelect} />
         <MovieWrapper>
           {!isLoading ? (
@@ -69,7 +79,8 @@ export default class MovieList extends Component {
             <Loading type="spinningBubbles" color="#333" />
           )}
         </MovieWrapper>
-      </div>
+        <Footer />
+      </Div>
     );
   }
 }

@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   display: inline - block;
-  color: #222;
+  color: #bbb;
+  background-color: #333;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -29,6 +30,11 @@ const MovieDisplayButtons = ({ handleSearchSelect }) => (
   <div>
     <Nav>
       <Ul>
+        <li>
+          <Button onClick={handleSearchSelect} value="trending/movie/day?">
+            Trending Now
+          </Button>
+        </li>
         <li>
           <Button onClick={handleSearchSelect} value="movie/popular?">
             Popular Titles

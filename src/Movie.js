@@ -6,15 +6,30 @@ const POSTERPATH = 'https://image.tmdb.org/t/p/w92';
 
 const MovieContainer = styled.div`
   display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 5px;
   justify-items: center;
+  align-items: center;
+  color: #bbb;
+  background-color: #333;
+  border-radius: 10px;
+  padding: 10px;
+`;
 
+const StyledDiv = styled.div`
+
+  h3 {
+    margin-top: 0;
+  }
 `;
 
 const Movie = ({ title, overview, posterpath }) => (
   <MovieContainer>
     <img src={`${POSTERPATH}${posterpath}`} alt={title} />
-    <h1>{ title }</h1>
-    <p>{ overview }</p>
+    <StyledDiv>
+      <h3>{title}</h3>
+      <p>{overview}</p>
+    </StyledDiv>
   </MovieContainer>
 );
 
