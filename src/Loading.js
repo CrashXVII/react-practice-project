@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
+import styled from 'styled-components';
+
+const Div = styled.div`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+`;
 
 
 const Loading = ({ type, color }) => (
-  <ReactLoading type={type} color={color} height={667} width={375} />
+  <Div>
+    <ReactLoading type={type} color={color} height={667} width={375} />
+  </Div>
 );
 
 

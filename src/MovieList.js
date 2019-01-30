@@ -18,6 +18,7 @@ const MovieWrapper = styled.div`
   grid-gap: 5px;
   max-width: 90%;
   background-color: ${backgroundColor};
+
 `;
 
 const Div = styled.div`
@@ -29,6 +30,7 @@ export default class MovieList extends Component {
     super(props);
     this.state = {
       isLoading: true,
+      error: false,
       movielist: [],
       key: API_KEY,
       base: 'https://api.themoviedb.org/3/',
@@ -56,29 +58,31 @@ export default class MovieList extends Component {
       const movielist = await data.results;
       this.setState({ isLoading: false, movielist });
     } catch (e) {
+      this.setState({ isLoading: false, error: true });
       throw new Error(e);
     }
   }
 
   render() {
-    const { movielist, isLoading } = this.state;
+    const { movielist, isLoading, error } = this.state;
     return (
       <Div>
         <MovieDisplayButtons handleSearchSelect={this.handleSearchSelect} />
-        <MovieWrapper>
-          {!isLoading ? (
-            movielist.map(movie => (
+
+        {!isLoading ? (
+          <MovieWrapper>
+            {movielist.map(movie => (
               <Movie
                 key={movie.id}
                 title={movie.title}
                 overview={movie.overview}
                 posterpath={movie.poster_path}
               />
-            ))
-          ) : (
-            <Loading type="spinningBubbles" color="#333" />
-          )}
-        </MovieWrapper>
+            ))}
+          </MovieWrapper>
+        ) : (
+          <Loading type="spinningBubbles" color="#333" />
+        )}
         <Footer />
       </Div>
     );
