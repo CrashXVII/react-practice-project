@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from 'styled-theming';
 import API_KEY from './API';
 import Movie from './Movie';
@@ -11,14 +11,31 @@ const backgroundColor = theme('mode', {
   dark: '#000',
 });
 
+const size = {
+  small: 400,
+  med: 960,
+  large: 1140,
+};
+
+const above = Object.keys(size).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${size[label]}px) {
+      ${css(...args)}
+    }
+  `;
+  return acc;
+}, {});
+
 const MovieWrapper = styled.div`
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 5px;
   max-width: 90%;
   background-color: ${backgroundColor};
-
+  ${above.large`
+    grid-template-columns: repeat(2, 1fr);
+  `}
 `;
 
 const Div = styled.div`
@@ -30,7 +47,6 @@ export default class MovieList extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      error: false,
       movielist: [],
       key: API_KEY,
       base: 'https://api.themoviedb.org/3/',
@@ -58,13 +74,13 @@ export default class MovieList extends Component {
       const movielist = await data.results;
       this.setState({ isLoading: false, movielist });
     } catch (e) {
-      this.setState({ isLoading: false, error: true });
+      this.setState({ isLoading: false });
       throw new Error(e);
     }
   }
 
   render() {
-    const { movielist, isLoading, error } = this.state;
+    const { movielist, isLoading } = this.state;
     return (
       <Div>
         <MovieDisplayButtons handleSearchSelect={this.handleSearchSelect} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { elevation } from './Utilities';
 
 const POSTERPATH = 'https://image.tmdb.org/t/p/w92';
 
@@ -14,6 +15,12 @@ const MovieContainer = styled.div`
   background-color: #333;
   border-radius: 10px;
   padding: 10px;
+  transition: all .2s ease-in;
+  ${elevation[3]}
+  &:hover {
+    transform: scale(1.1);
+
+  }
 `;
 
 const StyledDiv = styled.div`

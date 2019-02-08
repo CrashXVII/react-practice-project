@@ -1,17 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const size = {
+  small: 635,
+  med: 960,
+  large: 1140,
+};
+
+const above = Object.keys(size).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${size[label]}px) {
+      ${css(...args)}
+    }
+  `;
+  return acc;
+}, {});
 
 const Button = styled.button`
   display: inline - block;
   color: #bbb;
   background-color: #333;
   font-size: 1em;
-  margin: 1em;
+  margin: 0;
   padding: 0.25em 1em;
   border: 2px solid #222;
   border-radius: 3px;
   display: block;
+  &:hover {
+    border: 2px solid rgb(41, 156, 223);
+  }
+  ${above.small`
+    margin: 1em;
+  `}
 `;
 
 const Nav = styled.nav`
@@ -21,9 +42,13 @@ const Nav = styled.nav`
 
 const Ul = styled.ul`
   list-style: none;
-  justify-content: flex-end;
-  display: flex;
   margin: 0;
+  padding: 0;
+  display: flex;
+  ${above.small`
+    display: flex;
+    justify-content: space-around;
+  `}
 `;
 
 const MovieDisplayButtons = ({ handleSearchSelect }) => (
