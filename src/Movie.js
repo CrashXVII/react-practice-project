@@ -15,7 +15,7 @@ const MovieContainer = styled.div`
   background-color: #333;
   border-radius: 10px;
   padding: 10px;
-  transition: all .2s ease-in;
+  transition: all .2s ease-in .1s;
   ${elevation[3]}
   &:hover {
     transform: scale(1.1);
